@@ -37,3 +37,10 @@ jobs:
     - name: Test with pytest
       run: |
         python
+    - name: run
+      run: |
+        python MLHA.ipynb
+    - name: run2
+      run: |
+        python MLLC.ipynb
+        
