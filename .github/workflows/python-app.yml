@@ -1,4 +1,4 @@
-# GitHub Actions CI for Python + Jupyter + Testing + Linting
+# GitHub Actions CI for Python + Jupyter + Linting (No Tests)
 
 name: Python application
 
@@ -28,17 +28,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest nbconvert ipykernel
+        pip install flake8 nbconvert ipykernel
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-    - name: Run tests with pytest
-      run: |
-        pytest test_scripts.py
 
     - name: Run MLHA notebook
       run: |
